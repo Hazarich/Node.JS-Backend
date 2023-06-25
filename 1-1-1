@@ -81,3 +81,4 @@ function Reviews (id, author, date, comment, rating){
      this.comment = comment,
      this.rating = rating
 }
+//код ще не дороблений
