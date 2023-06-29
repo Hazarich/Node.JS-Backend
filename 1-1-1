@@ -74,11 +74,68 @@ function Product (id, name, description, price, brand, sizes, activeSize, quanti
 }
 
 }
-function Reviews (id, author, date, comment, rating){
-     this.id = id
-     this.author = author,
-     this.date = date,
-     this.comment = comment,
-     this.rating = rating
+class Reviews {
+     constructor(id, author, date, comment, rating) {
+          this.id = id;
+          this.author = author,
+               this.date = date,
+               this.comment = comment,
+               this.rating = rating;
+     }
 }
-//код ще не дороблений
+function SearchProducts (products, search){
+     let result = ""
+this.products = [new Product(1, "Milka".toLowerCase, "h", 34, "j", 7, 8, 8,3,4,8), new Product(2, "Footbolka".toLowerCase, "h", 34, "j", 7, 8, 8,3,4,8)]
+for (let i = 0; i<this.products.length;i++){
+     
+     if(this.products[i].name === search){
+          result += this.products[i].name
+          
+     }
+     return result
+}
+}
+let ArrayOfProducts = [new Product(1, "Milka", "h", 34, "j", 7, 8, 8,3,4,8), new Product(2, "Footbolka", "h", 35, "j", 7, 8, 8,3,4,8)]
+function sortProducts(products, sortRule) {
+     function sortById() {
+       let arrayOfId = [];
+       if (ArrayOfProducts.length > 0) {
+         for (let i = 0; i < ArrayOfProducts.length; i++) {
+           arrayOfId[i] = ArrayOfProducts[i].id;
+         }
+         arrayOfId.sort(function(a, b) {
+           return a - b;
+         });
+       } else {
+         arrayOfId = "нет id";
+       }
+       console.log(arrayOfId);
+     }
+   
+     function sortByPrice() {
+       let arrayOfPrices = [];
+       for (let i = 0; i < ArrayOfProducts.length; i++) {
+         arrayOfPrices[i] = ArrayOfProducts[i].price;
+       }
+       arrayOfPrices.sort(function(a, b) {
+         return a - b;
+       });
+       console.log(arrayOfPrices);
+     }
+   
+     function sortByName() {
+       let arrayOfNames = [];
+       for (let i = 0; i < ArrayOfProducts.length; i++) {
+         arrayOfNames[i] = ArrayOfProducts[i].name;
+       }
+       arrayOfNames.sort();
+       console.log(arrayOfNames);
+     }
+   
+     sortById();
+     sortByPrice();
+     sortByName();
+   }
+   
+   sortProducts();
+   
