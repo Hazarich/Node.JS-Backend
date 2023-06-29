@@ -85,57 +85,42 @@ class Reviews {
 }
 function SearchProducts (products, search){
      let result = ""
-this.products = [new Product(1, "Milka".toLowerCase, "h", 34, "j", 7, 8, 8,3,4,8), new Product(2, "Footbolka".toLowerCase, "h", 34, "j", 7, 8, 8,3,4,8)]
 for (let i = 0; i<this.products.length;i++){
      
-     if(this.products[i].name === search){
-          result += this.products[i].name
+     if(products[i].name === search){
+          result += products[i].name
           
      }
      return result
 }
 }
-let ArrayOfProducts = [new Product(1, "Milka", "h", 34, "j", 7, 8, 8,3,4,8), new Product(2, "Footbolka", "h", 35, "j", 7, 8, 8,3,4,8)]
 function sortProducts(products, sortRule) {
-     function sortById() {
-       let arrayOfId = [];
-       if (ArrayOfProducts.length > 0) {
-         for (let i = 0; i < ArrayOfProducts.length; i++) {
-           arrayOfId[i] = ArrayOfProducts[i].id;
+     let result = [];
+     if (sortRule === "id".toLowerCase()){
+         for (let i = 0; i < products.length; i++) {
+           result[i] = products[i].id;
          }
-         arrayOfId.sort(function(a, b) {
+         result.sort(function(a, b) {
            return a - b;
          });
-       } else {
-         arrayOfId = "нет id";
+       
+}
+if (sortRule === "Price".toLowerCase()){
+       for (let i = 0; i < products.length; i++) {
+         result[i] = products[i].price;
        }
-       console.log(arrayOfId);
-     }
-   
-     function sortByPrice() {
-       let arrayOfPrices = [];
-       for (let i = 0; i < ArrayOfProducts.length; i++) {
-         arrayOfPrices[i] = ArrayOfProducts[i].price;
-       }
-       arrayOfPrices.sort(function(a, b) {
+       result.sort(function(a, b) {
          return a - b;
        });
-       console.log(arrayOfPrices);
      }
-   
-     function sortByName() {
-       let arrayOfNames = [];
-       for (let i = 0; i < ArrayOfProducts.length; i++) {
-         arrayOfNames[i] = ArrayOfProducts[i].name;
+if(sortRule === "Name".toLowerCase()){
+       for (let i = 0; i < products.length; i++) {
+         result[i] = products[i].name;
        }
-       arrayOfNames.sort();
-       console.log(arrayOfNames);
+       result.sort();
      }
-   
-     sortById();
-     sortByPrice();
-     sortByName();
+return console.log(result);
    }
    
-   sortProducts();
+   sortProducts([new Product(1, "MilKa".toLowerCase(), "h", 34, "j", 7, 8, 8,3,4,8), new Product(2, "Footbolka".toLowerCase(), "h", 35, "j", 7, 8, 8,3,4,8)], "id".toLowerCase());
    
