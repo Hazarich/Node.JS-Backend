@@ -1,0 +1,31 @@
+let Validator = {
+    validateGmail: function (gmail){
+        let regexGmail = /(^\w[a-zA-Z0-9\-.+]{2,20})@([\w.!$%&’*+/=?^_-\d]){1,15}\.([a-z]){1,5}/gi;
+        return regexGmail.test(gmail)
+    },
+    validatePhone: function(phone){
+        let regexPhone = /^\+?(\d\d)?(\s|\-)*((\(?[\d]{3}\)?)|(\(?\d{2}\-{1}\d{1}\)))(\s|\-)*\d((\s*\d\-?){6})$/gi;
+        return regexPhone.test(phone)
+    },
+     validatePassword: function(password){
+        let regexPassword = /(?=.*[A-Z])(?=.*[\d])(?=.*[a-z])[a-zA-Z0-9_]{8,}/;
+        return regexPassword.test(password)
+    }
+
+     }
+//..............................................TESTING.........................................................
+let testingGmail = function(phrase){
+    let result = Validator.validateGmail(phrase)
+    return result;
+}
+console.log(testingGmail("Idontknow@gmail.com"))
+let testingPhone = function (phrase){
+    let result = Validator.validatePhone(phrase)
+    return result;
+}
+console.log(testingPhone("+38088005553535"));
+let testingPassword = function(phrase){
+    let result = Validator.validatePassword(phrase)
+    return result;
+}
+console.log(testingPassword("136631Qq"))
