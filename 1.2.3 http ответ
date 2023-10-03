@@ -16,8 +16,8 @@ function processHttpRequest(method, uri, headers, body) {
     let regExp = /^\/sum\?nums=\d+(?:,\d+)*$/
     if  (method === "GET" && regExp.test(uri)){
         let r = uri.match(regExp2)
-        let res = r.map(Number); // Convert matched digits to numbers
-        let body = res.reduce((a, b) => a + b, 0); // Calculate the sum
+        let res = r.map(Number);
+        let body = res.reduce((a, b) => a + b, 0);
       return  outputHttpResponse(200, "OK", {}, body)
     }
     else if(uri.startsWith("/sum?nums=") === false){
